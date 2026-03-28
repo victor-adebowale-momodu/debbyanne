@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>DebbyAnne — GSoC x Konflux CI devlog</title>
+        <title>DebbyAnne — GSoC x Hermeto devlog</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -11,10 +11,6 @@
             rel="stylesheet"
         />
         <style>
-            :root {
-                --submission-date: "2026-03-31";
-            }
-
             :root {
                 --bg: #0d0f14;
                 --surface: #131720;
@@ -24,6 +20,8 @@
                 --amber: #ffb300;
                 --violet: #a78bfa;
                 --red: #ff5555;
+                --pink: #ff79c6;
+                --blue: #5b9cf6;
                 --muted: #3a4558;
                 --text: #c8d3e8;
                 --dim: #5a6a85;
@@ -214,7 +212,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 10px 0 14px;
+                padding: 10px 0 10px;
                 gap: 12px;
                 flex-wrap: wrap;
             }
@@ -228,7 +226,6 @@
             .sort-toggle {
                 display: flex;
                 align-items: center;
-                gap: 0;
                 border: 1px solid var(--border);
                 border-radius: 4px;
                 overflow: hidden;
@@ -259,6 +256,26 @@
                 align-self: stretch;
             }
 
+            .legend {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px 14px;
+                padding: 0 0 16px;
+                font-size: 10px;
+                color: var(--dim);
+            }
+            .legend-item {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+            .legend-dot {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+
             #timeline {
                 padding-bottom: 60px;
             }
@@ -287,44 +304,12 @@
                 padding-top: 3px;
             }
             .node {
-                width: 18px;
-                height: 18px;
+                width: 16px;
+                height: 16px;
                 border-radius: 50%;
                 border: 1.5px solid;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 8px;
-                font-weight: 700;
                 flex-shrink: 0;
-                letter-spacing: 0;
             }
-            .node-research {
-                border-color: var(--cyan);
-                color: var(--cyan);
-                background: rgba(0, 212, 255, 0.08);
-            }
-            .node-code {
-                border-color: var(--green);
-                color: var(--green);
-                background: rgba(0, 255, 136, 0.08);
-            }
-            .node-writing {
-                border-color: var(--amber);
-                color: var(--amber);
-                background: rgba(255, 179, 0, 0.08);
-            }
-            .node-community {
-                border-color: var(--violet);
-                color: var(--violet);
-                background: rgba(167, 139, 250, 0.08);
-            }
-            .node-meta {
-                border-color: var(--red);
-                color: var(--red);
-                background: rgba(255, 85, 85, 0.08);
-            }
-
             .rail-line {
                 width: 1px;
                 flex: 1;
@@ -372,15 +357,14 @@
                 margin-bottom: 7px;
                 flex-wrap: wrap;
             }
-
+            .entry-day {
+                font-size: 11px;
+                font-weight: 700;
+            }
             .entry-date {
                 font-size: 10px;
                 color: var(--dim);
                 margin-left: auto;
-            }
-            .entry-day {
-                font-size: 10px;
-                color: var(--muted);
             }
             .bubble-text {
                 font-size: 12.5px;
@@ -414,6 +398,9 @@
                 .statusbar {
                     gap: 6px 12px;
                 }
+                .legend {
+                    gap: 5px 10px;
+                }
             }
         </style>
     </head>
@@ -431,7 +418,7 @@
                     <div class="about-label">// readme</div>
                     <p>
                         Ladies and gents, the name is Victor Momodu, and with me
-                        is DebbyAnne, my stenographer-who has compiled my
+                        is DebbyAnne—my stenographer—who has compiled my
                         thoughts on my GSoC journey so far.
                     </p>
                     <p>
@@ -441,10 +428,7 @@
                         actually happened in my head. Still, every thought here
                         is honest and true.
                     </p>
-                    <p>
-                        Every entry here is written on the day it happened. The
-                        embarrassing ones stay.
-                    </p>
+                    <p>Happy reading.</p>
                 </div>
             </header>
 
@@ -501,6 +485,37 @@
                 </div>
             </div>
 
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #5b9cf6"></div>
+                    monday
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #00d4ff"></div>
+                    tuesday
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #00ff88"></div>
+                    wednesday
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #ffb300"></div>
+                    thursday
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #ff5555"></div>
+                    friday
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #a78bfa"></div>
+                    saturday
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #ff79c6"></div>
+                    sunday
+                </div>
+            </div>
+
             <div id="timeline"></div>
 
             <footer>
@@ -511,6 +526,31 @@
 
         <script>
             const SUBMISSION = new Date("2025-04-08T23:59:59");
+
+            const DAY_COLORS = {
+                Monday: "#5b9cf6",
+                Tuesday: "#00d4ff",
+                Wednesday: "#00ff88",
+                Thursday: "#ffb300",
+                Friday: "#ff5555",
+                Saturday: "#a78bfa",
+                Sunday: "#ff79c6",
+            };
+
+            function dayInfo(dateStr) {
+                const d = new Date(dateStr + "T12:00:00");
+                const name = d.toLocaleDateString("en-GB", { weekday: "long" });
+                return { name, color: DAY_COLORS[name] || "#c8d3e8" };
+            }
+
+            function fmtDate(dateStr) {
+                const d = new Date(dateStr + "T12:00:00");
+                return d.toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                });
+            }
 
             function updateDeadline() {
                 const now = new Date();
@@ -524,20 +564,6 @@
                         month: "short",
                         year: "numeric",
                     });
-            }
-
-            function dayName(dateStr) {
-                const d = new Date(dateStr + "T12:00:00");
-                return d.toLocaleDateString("en-GB", { weekday: "long" });
-            }
-
-            function fmtDate(dateStr) {
-                const d = new Date(dateStr + "T12:00:00");
-                return d.toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                });
             }
 
             let currentSort = "latest";
@@ -557,22 +583,24 @@
                 tl.innerHTML = "";
 
                 list.forEach((entry, i) => {
+                    const { name, color } = dayInfo(entry.date);
                     const el = document.createElement("div");
                     el.className = "entry";
                     el.style.animationDelay = i * 40 + "ms";
 
                     el.innerHTML = `
-        <div class="entry-rail">
-          ${i < list.length - 1 ? '<div class="rail-line"></div>' : ""}
-        </div>
-        <div class="bubble">
-          <div class="bubble-meta">
-            <span class="entry-day">${dayName(entry.date)}</span>
-            <span class="entry-date">${fmtDate(entry.date)}</span>
-          </div>
-          <div class="bubble-text">${entry.text}</div>
-        </div>
-      `;
+                        <div class="entry-rail">
+                            <div class="node" style="border-color:${color};background:${color}18"></div>
+                            ${i < list.length - 1 ? '<div class="rail-line"></div>' : ""}
+                        </div>
+                        <div class="bubble">
+                            <div class="bubble-meta">
+                                <span class="entry-day" style="color:${color}">${name}</span>
+                                <span class="entry-date">${fmtDate(entry.date)}</span>
+                            </div>
+                            <div class="bubble-text">${entry.text}</div>
+                        </div>
+                    `;
                     tl.appendChild(el);
                 });
             }
