@@ -1,6 +1,6 @@
 [
     {
-        "date": "2025-02-10",
+        "date": "2026-02-10",
         "text": "First contact with Hermeto. Came across it while researching dependency management tools. Read through the README and architecture docs — it's a hermetic build environment for Python packages. The lock-file model clicked immediately."
     }
 ]

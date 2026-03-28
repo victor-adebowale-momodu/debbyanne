@@ -425,10 +425,9 @@
                         Please note: while the thoughts are presented in
                         chronological order, they weren’t written that way. What
                         you’re reading is a loose reconstruction of what
-                        actually happened in my head. Still, every thought here
-                        is honest and true.
+                        actually happened in my head.
                     </p>
-                    <p>Happy reading.</p>
+                    <p>Happy reading!</p>
                 </div>
             </header>
 
@@ -531,9 +530,22 @@
                 const diff = SUBMISSION - now;
                 const days = Math.max(0, Math.ceil(diff / 86400000));
                 document.getElementById("days-left").textContent = days;
+
+                let lastUpdated;
+                if (allEntries.length > 0) {
+                    lastUpdated = new Date(
+                        allEntries
+                            .map((e) => e.date)
+                            .sort((a, b) => b.localeCompare(a))[0] +
+                            "T12:00:00",
+                    );
+                } else {
+                    lastUpdated = now;
+                }
+
                 document.getElementById("footer-sync").textContent =
                     "last updated: " +
-                    now.toLocaleDateString("en-GB", {
+                    lastUpdated.toLocaleDateString("en-GB", {
                         day: "numeric",
                         month: "short",
                         year: "numeric",
@@ -597,13 +609,12 @@
                     document.getElementById("entry-count").textContent =
                         data.length;
                     render();
+                    updateDeadline();
                 })
                 .catch(() => {
                     document.getElementById("timeline").innerHTML =
                         '<p style="color:var(--dim);padding:20px 0;">// no entries found — add some to entries.json</p>';
                 });
-
-            updateDeadline();
         </script>
     </body>
 </html>
