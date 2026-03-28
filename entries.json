@@ -1,0 +1,37 @@
+[
+    {
+        "date": "2025-02-10",
+        "tag": "research",
+        "text": "First contact with Hermeto. Came across it while researching dependency management tools. Read through the README and architecture docs — it's a hermetic build environment for Python packages. The lock-file model clicked immediately."
+    },
+    {
+        "date": "2025-02-18",
+        "tag": "code",
+        "text": "Cloned the repo and got the dev environment up. Traced the pip-compile integration path. Noticed the resolver doesn't handle extras markers transitively — filed a note in my research doc. Might be a good issue to tackle."
+    },
+    {
+        "date": "2025-02-25",
+        "tag": "research",
+        "text": "Deep dive into open issues. Mapped out the ones tagged good-first-issue vs help-wanted. Three unresolved issues related to multi-platform lock file generation — this feels like a coherent GSoC project scope."
+    },
+    {
+        "date": "2025-03-04",
+        "tag": "community",
+        "text": "Introduced myself on the project's Zulip channel. Got a reply from a maintainer within a day — they confirmed the DEB ecosystem angle is something they want to invest in. Encouraged me to send a draft proposal."
+    },
+    {
+        "date": "2025-03-12",
+        "tag": "code",
+        "text": "Opened a small draft PR fixing the markers parsing bug I spotted in February. Got feedback: fix was right but needed a test. Added the test, PR merged after two rounds. First contribution done."
+    },
+    {
+        "date": "2025-03-21",
+        "tag": "writing",
+        "text": "Started drafting the GSoC proposal. Outline: problem statement → current limitation in DEB support → proposed architecture → milestones → about me. The timeline section is giving me the most trouble — trying to be realistic without underselling scope."
+    },
+    {
+        "date": "2025-03-28",
+        "tag": "meta",
+        "text": "Built DebbyAnne to track the journey publicly. The goal: keep myself honest and document the process in a format that feels less like a lab report and more like talking to someone. Next: finish proposal draft, send to maintainer for feedback before Apr 8."
+    }
+]
