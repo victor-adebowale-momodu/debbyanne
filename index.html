@@ -372,34 +372,6 @@
                 margin-bottom: 7px;
                 flex-wrap: wrap;
             }
-            .tag {
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 1px;
-                text-transform: uppercase;
-                padding: 2px 7px;
-                border-radius: 2px;
-            }
-            .tag-research {
-                background: rgba(0, 212, 255, 0.1);
-                color: var(--cyan);
-            }
-            .tag-code {
-                background: rgba(0, 255, 136, 0.1);
-                color: var(--green);
-            }
-            .tag-writing {
-                background: rgba(255, 179, 0, 0.1);
-                color: var(--amber);
-            }
-            .tag-community {
-                background: rgba(167, 139, 250, 0.1);
-                color: var(--violet);
-            }
-            .tag-meta {
-                background: rgba(255, 85, 85, 0.1);
-                color: var(--red);
-            }
 
             .entry-date {
                 font-size: 10px;
@@ -458,20 +430,16 @@
                 <div class="about">
                     <div class="about-label">// readme</div>
                     <p>
-                        Ladies and Gents! The name is Victor Momodu and with me is
-                        DebbyAnne. She is my stenographer and she has compiled my thoughts 
-                        GSoC journey so far. Please note that while the thoughts expressed here
-                        are chronological order, it wasn't compiled that way, it is a loose 
-                        representation of what actually happened in my head. However, every thought
-                        here is honest and true.
+                        Ladies and gents, the name is Victor Momodu, and with me
+                        is DebbyAnne, my stenographer-who has compiled my
+                        thoughts on my GSoC journey so far.
                     </p>
                     <p>
-                        I built this because I wanted a record that was honest
-                        and informal: not a portfolio piece, not a brag thread,
-                        just a running log of what I read, what I broke, what I
-                        figured out, and what I still don't understand. If
-                        you're here because you're also applying to GSoC, or
-                        curious about Hermeto, or just stumbled in — welcome.
+                        Please note: while the thoughts are presented in
+                        chronological order, they weren’t written that way. What
+                        you’re reading is a loose reconstruction of what
+                        actually happened in my head. Still, every thought here
+                        is honest and true.
                     </p>
                     <p>
                         Every entry here is written on the day it happened. The
@@ -544,14 +512,6 @@
         <script>
             const SUBMISSION = new Date("2025-04-08T23:59:59");
 
-            const TAGS = {
-                research: { label: "RESEARCH", node: "R", cls: "research" },
-                code: { label: "CODE", node: "C", cls: "code" },
-                writing: { label: "WRITING", node: "W", cls: "writing" },
-                community: { label: "COMMUNITY", node: "M", cls: "community" },
-                meta: { label: "META", node: "*", cls: "meta" },
-            };
-
             function updateDeadline() {
                 const now = new Date();
                 const diff = SUBMISSION - now;
@@ -597,20 +557,16 @@
                 tl.innerHTML = "";
 
                 list.forEach((entry, i) => {
-                    const t = TAGS[entry.tag] || TAGS.meta;
-
                     const el = document.createElement("div");
                     el.className = "entry";
                     el.style.animationDelay = i * 40 + "ms";
 
                     el.innerHTML = `
         <div class="entry-rail">
-          <div class="node node-${t.cls}">${t.node}</div>
           ${i < list.length - 1 ? '<div class="rail-line"></div>' : ""}
         </div>
         <div class="bubble">
           <div class="bubble-meta">
-            <span class="tag tag-${t.cls}">${t.label}</span>
             <span class="entry-day">${dayName(entry.date)}</span>
             <span class="entry-date">${fmtDate(entry.date)}</span>
           </div>
