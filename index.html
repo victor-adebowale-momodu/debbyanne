@@ -15,6 +15,7 @@
                 --bg: #0d0f14;
                 --surface: #131720;
                 --border: #1e2535;
+                --white: #ffffff;
                 --green: #00ff88;
                 --cyan: #00d4ff;
                 --amber: #ffb300;
@@ -60,6 +61,10 @@
                 );
                 pointer-events: none;
                 z-index: 999;
+            }
+
+            a {
+                color: white;
             }
 
             .wrap {
@@ -439,11 +444,17 @@
                 </div>
                 <div class="stat">
                     <div class="dot dot-cyan"></div>
-                    org: <strong>Hermeto / hermetoproject</strong>
+                    org:
+                    <strong>
+                        <a href="https://github.com/hermetoproject/hermeto"
+                            >hermetoproject/hermeto</a
+                        ></strong
+                    >
                 </div>
                 <div class="stat">
                     <div class="dot dot-amber"></div>
-                    deadline: <strong id="deadline-date">Apr 8, 2025</strong>
+                    deadline:
+                    <strong id="deadline-date">Mar 31, 2026 @ 18:00 UTC</strong>
                 </div>
                 <div class="stat">
                     <div class="dot dot-violet"></div>
@@ -452,13 +463,12 @@
             </div>
 
             <div class="project-banner">
-                <div class="project-label">// gsoc 2025 · project proposal</div>
-                <div class="project-title">
-                    Adding support for the Debian/Ubuntu package ecosystem [DEB]
-                    to the Hermeto project
-                </div>
-                <div class="project-org">
-                    org: <span>hermetoproject</span> &nbsp;·&nbsp; prefetch: DEB
+                <div class="project-label">
+                    //
+                    <a
+                        href="https://docs.google.com/document/d/1FdXqupnJlT5jFFnwne6s8UzBT3ZHhINyuIVwlC1fons/edit?usp=sharing"
+                        >gsoc 2026 · project proposal</a
+                    >
                 </div>
             </div>
 
@@ -519,13 +529,13 @@
             <div id="timeline"></div>
 
             <footer>
-                <span>DebbyAnne · GSoC 2025 devlog</span>
+                <span>DebbyAnne · GSoC 2026 devlog</span>
                 <span id="footer-sync">—</span>
             </footer>
         </div>
 
         <script>
-            const SUBMISSION = new Date("2025-04-08T23:59:59");
+            const SUBMISSION = new Date(Date.UTC(2026, 2, 31, 18, 0, 0));
 
             const DAY_COLORS = {
                 Monday: "#5b9cf6",
