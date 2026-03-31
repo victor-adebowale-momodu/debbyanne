@@ -45,6 +45,8 @@ Instance where you wanted to use ChronOS with Konflux CI and realised it was ove
 Understanding of the parallelization improvement suggesting in Issue 1459
 git commit amend
 git push force with lease
+git commit with signing
+git rebasing v merge
 assisted by Claude
 Your thoughts on AI
 SLSA definition
