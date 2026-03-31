@@ -1,0 +1,38 @@
+- date: "2026-03-03"
+  text: >
+    GSoC organisations should be out by now.
+    Lemme check through the organisations.
+    Django seems nice. I mean, it is backend + Python.
+    Proceeds to check more organisations.
+    Stumbles on Konflux CI. Definitely DevOps. I know Python + Docker a bit. 
+    Interesting. Only 3 issues. What is the toughest project here? Adding Debian support to Hermeto. And there is RPM. Finally all this OS hopping I have been done would be useful.
+    What is Hermeto? Hermetic builds. That is dope. Refers to being sealed off. Okay interesting.
+    Checks hermetoproject codebase. Now, that is more like it. 75 issues. Not that many. Reads Contributing.MD. Okay. Let's clone project. No pip command. Means one has to build it.
+    What are all these things? nox, requirements-build.txt and yadi yada. Proceeds to experiment with hermeto. Eventually runs it on a Python project. OMG, that is sick. I think this is it.
+    
+- date: "2026-03-04"
+  text: >
+    Okay, let's try it on other projects. It says it supports NPM. Proceeds to spin up a quick project and run hermeto.
+    For npm, node_modules should not be in the project. But .venv was allowed. Deletes node_modules. See the result.
+    Dude, this is really sick. Wait, how do you now point your system to look at these files rather than the usual one?
+    Okay, turns out there are environment variables that determine where your project files dependencies would be searched from. That makes sense. 
+    But why all these trouble? Bazel has a really cool word. Hermeticity. Same input code gives same output.
+    
+- date: "2026-03-05"
+  text: >
+      Okay, now. Let's look into this RPM lockfile thing that is supposed to be the guide for the project I want to work on.
+      Damn, this is approachable. Okay, there is an input file. rpms.in.yaml. and an output rpms.out.yaml. Oh sorry. It is rpms.lock.yaml. 
+      Okay. So if I understand it correctly. It is a really way to specify rpm files to download. Damn, what the hell is in the lockfile. 
+      Let's see if I can run this. Seems like it is expected to run in a RPM based system. I can't be installing Fedora. Is there a way to hack it?
+      Let's try downloading a container. That is taking time. Wait, there is podman. Proceeds to try podman. It works. No output though. Seems rather complicated.
+    
+- date: "2026-03-06"
+  text: >
+      Project says to try and understand how Debian packages. Okay, how do they work? These output from AI are kinda flying over my head. 
+      After some research. Aha! The Debian Handbook. Wait, this is Debian 11 and we are on 13. Would there be that much difference? Okay, apt and dpkg. 
+      Here I come. Wait, this is much ooo. Consults NoteBookLLM. Phew! I just need Chapters 5 and 6. Let's skim through it.
+      Okay, now to send a message to the mentor. WTH do I write? Just write something. Proceeds to write. The name is Victor Momodu... It does not have to be perfect.
+      Oya, send. Imagine he replies. That would be sick.
+
+- date: "2026-03-07"
+    

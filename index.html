@@ -10,6 +10,7 @@
             href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
             rel="stylesheet"
         />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
         <style>
             :root {
                 --bg: #0d0f14;
@@ -602,18 +603,21 @@
                 render();
             }
 
-            fetch("entries.json")
-                .then((r) => r.json())
-                .then((data) => {
-                    allEntries = data;
+            fetch("entries.yaml")
+                .then((r) => r.text())
+                .then((yamlString) => {
+                    const data = jsyaml.load(yamlString);
+
+                    allEntries = data || [];
                     document.getElementById("entry-count").textContent =
-                        data.length;
+                        allEntries.length;
                     render();
                     updateDeadline();
                 })
-                .catch(() => {
+                .catch((err) => {
+                    console.error("Error loading YAML:", err);
                     document.getElementById("timeline").innerHTML =
-                        '<p style="color:var(--dim);padding:20px 0;">// no entries found — add some to entries.json</p>';
+                        '<p style="color:var(--dim);padding:20px 0;">// error loading or parsing entries.yaml</p>';
                 });
         </script>
     </body>
