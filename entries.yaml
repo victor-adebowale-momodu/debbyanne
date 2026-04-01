@@ -1,42 +1,77 @@
 - date: "2026-03-03"
   text: >
-    GSoC organisations should be out by now.
-    Lemme check through the organisations.
-    Django seems nice. I mean, it is backend + Python.
-    Proceeds to check more organisations.
-    Stumbles on Konflux CI. Definitely DevOps. I know Python + Docker a bit. 
-    Interesting. Only 3 issues. What is the toughest project here? Adding Debian support to Hermeto. And there is RPM. Finally all this OS hopping I have been done would be useful.
-    What is Hermeto? Hermetic builds. That is dope. Refers to being sealed off. Okay interesting.
-    Checks hermetoproject codebase. Now, that is more like it. 75 issues. Not that many. Reads Contributing.MD. Okay. Let's clone project. No pip command. Means one has to build it.
-    What are all these things? nox, requirements-build.txt and yadi yada. Proceeds to experiment with hermeto. Eventually runs it on a Python project. OMG, that is sick. I think this is it.
-    
+      GSoC organisations should be out by now.
+      [action: Lemme check through the organisations.]
+      Django seems nice. I mean, it is backend + Python.
+      [action: Proceeds to check more organisations.]
+      [action: Stumbles on Konflux CI.] Definitely DevOps. I know Python + Docker a bit.
+      Interesting. Only 3 issues. What is the toughest project here? Adding Debian support to Hermeto. And there is RPM. Finally all this OS hopping I have been done would be useful.
+      What is Hermeto? Hermetic builds. That is dope. Refers to being sealed off. Okay interesting.
+      [action: Checks hermetoproject codebase.] Now, that is more like it. 75 issues. Not that many. [action: Reads Contributing.MD.] Okay. [action: Let's clone project.] No pip command. Means one has to build it.
+      What are all these things? nox, requirements-build.txt and yadi yada. [action: Proceeds to experiment with hermeto. Eventually runs it on a Python project.] OMG, that is sick. I think this is it.
+
 - date: "2026-03-04"
   text: >
-    Okay, let's try it on other projects. It says it supports NPM. Proceeds to spin up a quick project and run hermeto.
-    For npm, node_modules should not be in the project. But .venv was allowed. Deletes node_modules. See the result.
-    Dude, this is really sick. Wait, how do you now point your system to look at these files rather than the usual one?
-    Okay, turns out there are environment variables that determine where your project files dependencies would be searched from. That makes sense. 
-    But why all these trouble? Bazel has a really cool word. Hermeticity. Same input code gives same output.
-    
+      Okay, let's try it on other projects. It says it supports NPM. [action: Proceeds to spin up a quick project and run hermeto.]
+      For npm, node_modules should not be in the project. But .venv was allowed. [action: Deletes node_modules. See the result.]
+      Dude, this is really sick. Wait, how do you now point your system to look at these files rather than the usual one?
+      Okay, turns out there are environment variables that determine where your project files dependencies would be searched from. That makes sense.
+      But why all these trouble? Bazel has a really cool word. Hermeticity. Same input code gives same output.
+
 - date: "2026-03-05"
   text: >
       Okay, now. Let's look into this RPM lockfile thing that is supposed to be the guide for the project I want to work on.
-      Damn, this is approachable. Okay, there is an input file. rpms.in.yaml. and an output rpms.out.yaml. Oh sorry. It is rpms.lock.yaml. 
-      Okay. So if I understand it correctly. It is a really way to specify rpm files to download. Damn, what the hell is in the lockfile. 
-      Let's see if I can run this. Seems like it is expected to run in a RPM based system. I can't be installing Fedora. Is there a way to hack it?
-      Let's try downloading a container. That is taking time. Wait, there is podman. Proceeds to try podman. It works. No output though. Seems rather complicated.
-    
+      Damn, this is approachable. Okay, there is an input file. rpms.in.yaml. and an output rpms.out.yaml. Oh sorry. It is rpms.lock.yaml.
+      Okay. So if I understand it correctly. It is a really way to specify rpm files to download. Damn, what the hell is in the lockfile.
+      [action: Let's see if I can run this.] Seems like it is expected to run in a RPM based system. I can't be installing Fedora. Is there a way to hack it?
+      [action: Let's try downloading a container.] That is taking time. Wait, there is podman. [action: Proceeds to try podman.] It works. No output though. Seems rather complicated.
+
 - date: "2026-03-06"
   text: >
-      Project says to try and understand how Debian packages. Okay, how do they work? These output from AI are kinda flying over my head. 
-      After some research. Aha! The Debian Handbook. Wait, this is Debian 11 and we are on 13. Would there be that much difference? Okay, apt and dpkg. 
-      Here I come. Wait, this is much ooo. Consults NoteBookLLM. Phew! I just need Chapters 5 and 6. Let's skim through it.
-      Okay, now to send a message to the mentor. WTH do I write? Just write something. Proceeds to write. The name is Victor Momodu... It does not have to be perfect.
+      Project says to try and understand how Debian packages. Okay, how do they work? These output from AI are kinda flying over my head.
+      [action: After some research.] Aha! The Debian Handbook. Wait, this is Debian 11 and we are on 13. Would there be that much difference? Okay, apt and dpkg.
+      Here I come. Wait, this is much ooo. [action: Consults NoteBookLLM.] Phew! I just need Chapters 5 and 6. [action: Let's skim through it.]
+      Okay, now to send a message to the mentor. WTH do I write? Just write something. [action: Proceeds to write.] The name is Victor Momodu... It does not have to be perfect.
       Oya, send. Imagine he replies. That would be sick.
+
+- date: "2026-03-07"
+  text: >
+      Now, let's attempt to read chapters 5 and 6 properly. [action: Proceeds to read Chapter 5.] Wait all DEB is is an archive. An archive of archives.
+      Damn, it is quite simple. I mean, not like it is very easy to understand. [action: Lemme see if I can run these commands.]
+      [action: Lemme see if I spin up a podman instance of Debian.] There has got to be another way. Wait, I am seeing distrobox. [action: Installs distrobox.]
+      [action: Tries the distrobox enter debian command.] [ctx: Victor uses Omarchy, an Arch Linux flavour.] Wait sudo pacman is indicated as an invalid command.
+      What is happening here? [action: Closes shell. Reopens shell terminal. Opens terminal again.] sudo pacman is indicated as a valid command.
+      Phew. Thought I bricked the system. [action: Check distrobox documentation.] Ooooooooooh. It install a Debian user space on my Arch Linux kernel.
+      Woah! Interesting. [action: Lemme download a .deb file.] ffmpeg comes to mind. [action: Tries commands listed in Chapter 5 of Debian Handbook.]
+      Once again, DEB files are archives of archives.
+
+- date: "2026-03-09"
+  text: >
+      [action: Continues reading Chapter 5.] So if I understand this correctly. There are two main archives in the Debian file. debian-binary is just record keeping.
+      control.tar.xz and data.tar.xz. Wait, what is with all the compression formats, xz, gz, bz? I'ma check that later.
+      [action: Proceeds to check contents of control.tar.xz.] Seems like this is gonna be most of what I am gonna be using.
+      I mean it is what states what the package you are downloading needs. No wonder apt always asks for dependencies when trying to install something.
+
+- date: "2026-03-10"
+  text: >
+      [action: Continues reading Chapter 5.] Okay there is this Recommends, Suggests, Conflict. And there are virtual packages.
+      Okay there is also this thing about pre and post installation scripts. Okay, there are checksums too and diffs.
+      Kinda complicated. I'ma check it later. Okay, there are source packages. This is where the source code lives.
+      Okay, removal does not remove the files per se. You have to run purge for that to happen. I am guessing that is what apt autoremove does.
+      Wait, Debian allows for multiple architectures. Of course, it would have its limitation but the fact that is possible is...
+
+- date: "2026-03-11"
+  text: >
+      Ooooooh. I got a reply. That is nice. Seems I may have to switch to Debian. But I like my Omarchy. Why am I fretting? Install Omakub.
+      That requires Ubuntu. [action: Downloads Ubuntu.] [action: Flashes to USB using caligula.] [action: Proceeds to install Ubuntu.] Of course, there would be an issue.
+      [action: Lemme try again.] Wait, it worked. [ctx: Victor, in the past routinely switched Linux distro every few weeks as he liked to experiment. So, he is used to whatever issues would arise during such endeavours.]
+
+- date: "2026-03-12"
+  text: >
+      [action: Lemme try Omakub.]
 
 - date: "2026-03-31"
   text: >
-      Hey, this is Victor from Mar 31st. Took the pen from DebbyAne to say a few things.
-      DebbyAnne has been busy tryna gather all my thoughts to piece together the timeline of what happened and build a proper narrative around this. 
+      Hey, this is Victor from Mar 31st. [ctx: Took the pen from DebbyAnne to say a few things.]
+      DebbyAnne has been busy tryna gather all my thoughts to piece together the timeline of what happened and build a proper narrative around this.
       She would probably be done by the week's end. Till then enjoy the first few days.
-    

@@ -262,19 +262,34 @@
                 align-self: stretch;
             }
 
+            /* ── legend ── */
             .legend {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 5px 14px;
+                gap: 5px 18px;
                 padding: 0 0 16px;
-                font-size: 10px;
+                font-size: 10.5px;
                 color: var(--dim);
+                align-items: center;
             }
-            .legend-dot {
-                width: 7px;
-                height: 7px;
-                border-radius: 50%;
-                flex-shrink: 0;
+            .legend-item {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            /* ── inline text types ── */
+            /* thoughts: default .bubble-text — no extra style needed */
+
+            .entry-action {
+                font-style: italic;
+                color: var(--cyan);
+            }
+
+            .entry-ctx {
+                text-decoration: underline;
+                text-underline-offset: 3px;
+                color: var(--dim);
             }
 
             #timeline {
@@ -423,8 +438,10 @@
                         thoughts on my GSoC journey so far.
                     </p>
                     <p>
-                        Please note: while the thoughts are presented in day-stamped chronological order.
-                        What you’re reading is a loose reconstruction of what actually happened in my head.
+                        Please note: while the thoughts are presented in
+                        day-stamped chronological order. What you're reading is
+                        a loose reconstruction of what actually happened in my
+                        head.
                     </p>
                     <p>Happy reading!</p>
                 </div>
@@ -488,6 +505,16 @@
                 </div>
             </div>
 
+            <div class="legend">
+                <span class="legend-item" style="color: var(--text)"
+                    >thoughts</span
+                >
+                <span style="color: var(--border)">·</span>
+                <span class="legend-item entry-action">actions</span>
+                <span style="color: var(--border)">·</span>
+                <span class="legend-item entry-ctx">context</span>
+            </div>
+
             <div id="timeline"></div>
 
             <footer>
@@ -522,6 +549,19 @@
                     month: "short",
                     year: "numeric",
                 });
+            }
+
+            // Parse [action: ...] and [ctx: ...] tags into styled spans
+            function parseText(raw) {
+                return raw
+                    .replace(
+                        /\[action:\s*(.*?)\]/g,
+                        '<span class="entry-action">$1</span>',
+                    )
+                    .replace(
+                        /\[ctx:\s*(.*?)\]/g,
+                        '<span class="entry-ctx">$1</span>',
+                    );
             }
 
             function updateDeadline() {
@@ -583,7 +623,7 @@
                                 <span class="entry-day" style="color:${color}">${name}</span>
                                 <span class="entry-date">${fmtDate(entry.date)}</span>
                             </div>
-                            <div class="bubble-text">${entry.text}</div>
+                            <div class="bubble-text">${parseText(entry.text)}</div>
                         </div>
                     `;
                     tl.appendChild(el);
